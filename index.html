@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeet Thakore | Portfolio</title>
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
+        body {
+            line-height: 1.6;
+            color: #fff;
+            background-color: #121212;
+        }
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: #1e1e1e;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #64ffda;
+        }
+section {
+    min-height: auto;
+    padding: 3rem 3rem;
+    background: #1e1e1e;
+}
+
+section:first-of-type {
+    padding-top: 6rem;
+}
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #64ffda;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #64ffda;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        .section-title:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: block;
+            object-fit: cover;
+            border: 3px solid #64ffda;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #64ffda, 0 0 10px #64ffda, 0 0 15px #64ffda, 0 0 20px #64ffda;
+            }
+            to {
+                box-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda, 0 0 30px #64ffda, 0 0 40px #64ffda;
+            }
+        }
+        .intro-text {
+            color: #64ffda;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Dancing Script', cursive;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .skill-tag {
+            background: #2d2d2d;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transform: perspective(800px) rotateY(0deg);
+            transform-style: preserve-3d;
+        }
+        .skill-tag:hover {
+            transform: perspective(800px) rotateY(15deg);
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+        }
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .skill-tag:hover::before {
+            opacity: 1;
+            animation: sparkle 1s infinite linear;
+        }
+        @keyframes sparkle {
+            0% {
+                transform: rotate(45deg) translateX(-100%);
+            }
+            100% {
+                transform: rotate(45deg) translateX(100%);
+            }
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            border: 1px solid #64ffda;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #2d2d2d;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+        .project-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .project-title {
+            color: #64ffda;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-title a {
+            color: #64ffda;
+            text-decoration: none;
+        }
+        .contact-info {
+            text-align: center;
+        }
+        .resume-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #64ffda;
+            color: #121212;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .education-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .education-logo {
+            width: 80px;
+            height: 80px;
+            margin-right: 1rem;
+            object-fit: contain;
+        }
+        .education-details {
+            flex: 1;
+        }.collage-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.collage-banner img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.collage-banner img:nth-child(2) {
+    width: 360px;
+    height: 240px;
+}
+
+
+        .experience-item {
+            margin-bottom: 20px;
+        }
+.experience-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.experience-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #64ffda;
+    border-radius: 8px;
+    padding: 20px;
+    min-width: 280px;
+    flex: 1;
+}
+
+.job-title {
+    color: #64ffda;
+    font-size: 16px;
+    margin: 0 0 10px 0;
+}
+
+.company {
+    color: #8b949e;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+}
+
+.duration {
+    color: #8b949e;
+    font-size: 14px;
+    margin: 0 0 15px 0;
+}
+
+.description {
+    color: #c9d1d9;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* For webkit browsers */
+.experience-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.experience-grid::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+.experience-grid::-webkit-scrollbar-thumb {
+    background: #64ffda;
+    border-radius: 4px;
+}
+.experience-grid {
+    cursor: grab;  /* Default hand cursor when hovering */
+}
+
+.experience-grid:active {
+    cursor: grabbing;  /* Grabbing hand cursor when clicking and dragging */
+}
+.custom-link {
+    color: #64ffda; /* Link color */
+    text-decoration: none; /* Removes default underline */
+    position: relative; /* Needed for the underline effect */
+    font-size: 16px; /* Font size (optional) */
+}
+
+.custom-link::before {
+    content: ''; /* Empty content for the underline */
+    position: absolute;
+    bottom: 0; /* Position the underline at the bottom of the link */
+    left: 0;
+    width: 0; /* Start with zero width */
+    height: 2px; /* Thickness of the underline */
+    background-color: #64ffda; /* Color of the underline */
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+.custom-link:hover::before {
+    width: 100%; /* Underline expands from left to right */
+}
+
+.custom-link:visited {
+    color: #64ffda; /* Keeps the color same after clicking */
+}
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+	    <a href="#MyBlog">My Blog</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    <section id="about">
+        <div class="container">
+            <img src="1.png" alt="Jeet Thakore" class="profile-img">
+           <a href="https://www.linkedin.com/in/jeet-pranav/" style="text-decoration: none; color: inherit;">
+    <h2 class="intro-text">Hi! I'm Jeet Thakore</h2>
+</a>
+
+            <h2 class="section-title">About Me</h2>
+            <p>I'm a passionate data enthusiast currently pursuing an MS in Information Management at the University of Illinois Urbana Champaign (UIUC). With a knack for transforming raw data into actionable insights, I specialize in data visualization, machine learning, Data Pre-Processing and cloud technologies. Whether it's crafting powerful dashboards or deploying machine learning models, I thrive on solving complex challenges. When I'm not decoding data, you'll find me exploring new technologies, experimenting with innovative ideas, or connecting with like-minded individuals eager to shape the future of analytics.</p>
+<p><b>My ambition is to become a full-stack data professional with a focus on big data extraction !</b></p>
+        </div>
+    </section>
+    <section id="collage">
+        <div class="container">
+            <div class="collage-banner">
+                <img src="2.png" alt="Collage Image 1">
+                <img src="3.jpg" alt="Collage Image 2">
+                <img src="10.png" alt="Collage Image 3">
+            </div>
+        </div>
+    </section>
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <img src="12.png" alt="UIUC Logo" class="education-logo">
+                <div class="education-details">
+                    <h3>University of Illinois Urbana Champaign (UIUC)</h3>
+                    <p>MS in Information Management (Expected May 2026)</p>
+                    <p>Aug 2024 - May 2026</p>
+                </div>
+            </div>
+            <div class="education-item">
+                <img src="11.png" alt="IITRAM Logo" class="education-logo">
+                <div class="education-details">
+                    <h3>Institute of Infrastructure Technology Research and Management (IITRAM)</h3>
+                    <p>Bachelor of Technology in Electrical Engineering (GPA: 3.82/4.00)</p>
+                    <p>Aug 2018 - May 2022</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<section id="experience">
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <h3 class="job-title">Data Analyst (A.S.E)</h3>
+                <p class="company">Tata Consultancy Services Limited</p>
+                <p class="duration">Jul 2022 - May 2024 | Gujarat, India</p>
+                <p class="description">Optimized database performance for Uganda Revenue Authority using Oracle PL/SQL, improving tax compliance by 15%. Designed Power BI dashboards for ASDA, enabling real-time inventory tracking across 600+ outlets and forecasting out-of-stock situations with 11% improved accuracy.</p>
+            </div>
+            <div class="experience-card">
+                <h3 class="job-title">SAP Analytics Cloud Intern</h3>
+                <p class="company">Tata Consultancy Services Limited</p>
+                <p class="duration">Jun 2022 - Apr 2023 | Gujarat, India</p>
+                <p class="description">Integrated SAP Analytics Cloud with SAP S/4HANA, enhancing forecasting and predictive analytics capabilities for business operations.</p>
+            </div>
+            <div class="experience-card">
+                <h3 class="job-title">Product Development Intern</h3>
+                <p class="company">RudraBots Pvt. Ltd.</p>
+                <p class="duration">Mar 2021 - Apr 2021 | Gujarat, India</p>
+                <p class="description">Conducted market research on Indian UAV trends and developed Power BI dashboards, aiding the launch of the flagship UAV product.</p>
+            </div>
+            <div class="experience-card">
+                <h3 class="job-title">Market Research Intern</h3>
+                <p class="company">MentorHive</p>
+                <p class="duration">Sept 2020 - Oct 2020 | Gujarat, India</p>
+                <p class="description">Analyzed survey data from 150+ students across 18 states to identify career preferences, using advanced Excel and Power BI to deliver actionable insights.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+            </section>
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+<div class="project-card">
+                    <img src="7.png" alt="Movie Recommendation Engine" class="project-image">
+                    <h3 class="project-title"><a href="https://github.com/JeetThakore/HR-Data-Analytics-on-PowerBI" target="_blank">HR KPI Analytics on PowerBI</a></h3>
+                    <p>Developed an interactive Power BI dashboard using HR attrition data to analyze key HR metrics like job involvement, satisfaction, salary, and experience, incorporating various visual tools and dynamic features for enhanced user exploration.</p>
+                </div>
+<div class="project-card">
+                    <img src="4.png" alt="Movie Recommendation Engine" class="project-image">
+                    <h3 class="project-title"><a href="https://github.com/JeetThakore/Food-Delivery-Analysis-Forecast" target="_blank">Food Delivery App Analysis and Forecast on PowerBI</a></h3>
+                    <p>Utilized Power Query to clean and transform data, created calculated columns and measures for analysis, and provided insights into top-selling products, operational area impact, and marketing campaign effectiveness, while forecasting weekly orders for inventory management and enhancing user experience with slicers and buttons in Power BI.</p>
+                </div>
+                <div class="project-card">
+                    <img src="6.png" alt="Movie Recommendation Engine" class="project-image">
+                    <h3 class="project-title"><a href="https://github.com/JeetThakore/Content_Based_Film_Recommendation_System" target="_blank">Content Based Movie Recommendation Model With End-To-End Web Deployment</a></h3>
+                    <p>Developed and deployed a content-based movie recommendation system using the TMDB dataset, applying data preprocessing, feature engineering, and vector similarity techniques, and created an interactive Streamlit website that recommends movies based on user input with visual movie posters.</p>
+                </div>
+                <div class="project-card">
+                    <img src="8.png" alt="Laptop Price Prediction" class="project-image">
+                    <h3 class="project-title"><a href="https://github.com/JeetThakore/Laptop_Price_Prediction" target="_blank">Interactive Laptop Price Prediction With End-To-End Web Deployment</a></h3>
+                    <p>Developed an interactive Streamlit web application for laptop price prediction, utilizing data pre-processing, feature engineering, and various ensemble machine learning models, with the Voting Regressor achieving an R2 score of 89% and MAE of 0.15%, providing users with an intuitive interface for price forecasting.</p>
+                
+            </div>
+<div class="project-card">
+                    <img src="9.png" alt="Laptop Price Prediction" class="project-image">
+                    <h3 class="project-title"><a href="https://github.com/JeetThakore/Smart-Surveillance-Parking-Camera-OpenCV" target="_blank">Smart Surveillance Parking Camera (OpenCV)</a></h3>
+                    <p>Developed a computer vision solution for energy conservation in underground parking lots using OpenCV to detect vehicle movement and activate lights accordingly, with a working prototype built using Arduino and PyFirmata, and proposed future enhancements for portability.</p>
+                </div>
+        </div>
+    </section>
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">DAX</span>
+  		<span class="skill-tag">Tableau</span>
+                <span class="skill-tag">Python</span>
+		<span class="skill-tag">RDBMS</span>
+		<span class="skill-tag">Database Designing</span>
+                <span class="skill-tag">Data Cleaning</span>
+		<span class="skill-tag">Exploratory Data Analysis</span>
+		<span class="skill-tag">Hyperparameter Tuning</span>
+                <span class="skill-tag">Machine Learning</span>
+		<span class="skill-tag">Informatica ETL</span>
+                <span class="skill-tag">Azure Databricks</span>
+                <span class="skill-tag">Azure DataFactory</span>
+                <span class="skill-tag">Azure Synapse Analytics</span>
+		<span class="skill-tag">Advanced Excel & VBA</span>
+                <span class="skill-tag">Agile Methodology</span>
+
+           </div>
+        </div>
+    </section>
+
+    <section id="MyBlog">
+        <div class="container">
+            <h2 class="section-title">My Blog</h2>
+<p>DataGlide is a blog for data enthusiasts who live and breathe data!
+Here you will find articles related to each and every titbit of data science like comprehensive roadmaps for learning statistics, curated lists of resources, must-know insights for data science, and more...
+
+This blog is a humble effort to make data science more intriguing and engaging for newbies!</p>
+<br>
+<p><a href="https://dataglide.blogspot.com/" download class="resume-btn">Checkout My Blog</a></p>
+            <div class="collage-banner">
+               <img src="5.png" alt="Blog Image">		
+
+            </div>
+        </div>
+    </section>
+
+     <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-info">
+               <br>
+<p>Email</p>
+<a href="mailto:jeetpt2@illinois.edu" class="custom-link">jeetpt2@illinois.edu</a>
+<br><br>
+<p>LinkedIn</p>
+<a href="https://www.linkedin.com/in/jeet-pranav" class="custom-link">Linkedin/JeetThakore</a>
+<br><br>
+<p>GitHub</p>
+<a href="https://github.com/JeetThakore" class="custom-link">GitHub/JeetThakore</a>
+<br><br>
+               <p><a href="#" download class="resume-btn">Download Resume</a></p>
+            </div>
+        </div>
+    </section>
+
